@@ -100,6 +100,7 @@ input_loop:
 
 
 increment_row:
+#increment_row(void)
     la a1, current_row
     lw a0, (a1)
     addi a0, a0, 1
@@ -141,6 +142,7 @@ display_row:
     ret
 
 config_gpio:
+# void config_gpio(pin, output?)
 	li		t0, 0x1f 
 	li		t1, IO_BANK0_BASE+ATOMIC_CLEAR
 	slli	t2, a0, 3
@@ -176,6 +178,7 @@ config_gpio:
 
 # Don't use with durations longer than 1 hour.
 wait_ms:
+# void wait_ms(ms_to_wait)
 	mv		a2, a0				//ms into a2
 	li		a0, TIMER0_TIMELR   //TIMER0 low bits
 	li		a1, TIMER0_TIMEHR	//TIMER0 high bits
@@ -200,6 +203,7 @@ wait_ms:
 	ret
 
 rearrange_bits:
+#rearranged_bits rearrange_bits(original_data)
 	#clear bits to rearrange
 	andi t6, a0, 0x3f
 	#Move bit 6 to position 10
