@@ -30,14 +30,6 @@
 
 .global main
 main:
-	li		t0, (1<<6)|(1<<9)
-	li		t1, RESETS_RESET+ATOMIC_CLEAR
-	sw		t0, (t1)
-	li		t1, RESETS_RESET_DONE
-1:
-	lw		t2, (t1)
-	and		t2, t2, t0
-	bne		t2, t0, 1b
 
 	#Outputs
 	li		a1, 1
